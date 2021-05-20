@@ -1,8 +1,9 @@
 from flask import Flask
 from flask_restful import Api
+
 from app.db import db
-from app.payments.api_v1.resources import payment_v1_0_bp
 from app.ext import ma, migrate
+from app.payments.api_v1.resources import payment_v1_0_bp
 
 
 def create_app(settings_module):

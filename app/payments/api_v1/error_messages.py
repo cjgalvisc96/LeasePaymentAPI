@@ -1,11 +1,11 @@
 date_error_messages = {
-    "invalid_format": "Formato de fecha incorrecto",
-    "only_odd_days": "lo siento pero no sepuede recibir "
-                     "el pago por decreto de administración"
+    "invalid_format": "Wrong date format ",
+    "only_odd_days": "I'm sorry but payment cannot be received due to "
+                     "administration decree "
 }
 
 payment_error_messages = {
-    "integrity_db_error": "Ya existe un Pago con codigoInmueble={0} y/o "
-                          "documentoIdentificacionArrendatario={1}",
-    "unknown_error": "Error desconocido en la DB"
+    "integrity_db_error": "There is already a Payment with property_code={0} "
+                          "and/or lessee_id={1}",
+    "unknown_error": "Unknown error in DB"
 }

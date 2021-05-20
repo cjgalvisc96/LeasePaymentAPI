@@ -1,3 +1,3 @@
-API_URL = '/api/pagos'
+API_URL = '/api/payments'
 STATUS_BAD_REQUEST = 400
 STATUS_GOOD_RESPONSE = 200

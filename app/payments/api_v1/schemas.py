@@ -1,31 +1,27 @@
 from datetime import datetime
 from typing import Union
+
 from marshmallow import fields
-from marshmallow.validate import Range
 from marshmallow.exceptions import ValidationError
+from marshmallow.validate import Range
+
 from app.ext import ma
-from app.payments.constants import (
-    MIN_PAYMENT_AMOUT,
-    MAX_PAYMENT_AMOUT
-)
-from app.payments.api_v1.error_messages import (
-    date_error_messages
-)
+from app.payments.api_v1.error_messages import date_error_messages
+from app.payments.constants import MAX_PAYMENT_AMOUNT, MIN_PAYMENT_AMOUNT
 
 
 class PaymentSchema(ma.Schema):
     id = fields.Integer(dump_only=True)
-    documentoIdentificacionArrendatario = fields.Integer(
-        required=True
-    )
-    codigoInmueble = fields.String(
-        required=True
-    )
-    valorPagado = fields.Integer(
+    lessee_id = fields.Integer(required=True)
+    property_code = fields.String(required=True)
+    paid_value = fields.Integer(
         required=True,
-        validate=Range(min=MIN_PAYMENT_AMOUT, max=MAX_PAYMENT_AMOUT)
+        validate=Range(
+            min=MIN_PAYMENT_AMOUNT,
+            max=MAX_PAYMENT_AMOUNT
+        )
     )
-    fechaPago = fields.Date(
+    payment_date = fields.Date(
         required=True,
         format="%d/%m/%Y",
         validate=lambda x: check_odd_days(date=x),

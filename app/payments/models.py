@@ -1,36 +1,36 @@
-from app.db import db, BaseModelMixin
+from app.db import BaseModelMixin, db
 
 
 class Payment(db.Model, BaseModelMixin):
-    __tablename__ = "pagos"
-
-    id = db.Column(db.Integer, primary_key=True)
-    documentoIdentificacionArrendatario = db.Column(db.Integer, unique=True)
-    codigoInmueble = db.Column(db.String(20), unique=True)
-    valorPagado = db.Column(db.Integer)
-    fechaPago = db.Column(db.Date)
+    id = db.Column(
+        db.Integer,
+        primary_key=True
+    )
+    lessee_id = db.Column(
+        db.Integer,
+        unique=True
+    )
+    property_code = db.Column(
+        db.String(20),
+        unique=True
+    )
+    paid_value = db.Column(db.Integer)
+    payment_date = db.Column(db.Date)
 
     def __init__(
         self,
-        documentoIdentificacionArrendatario,
-        codigoInmueble,
-        valorPagado,
-        fechaPago
+        lessee_id,
+        property_code,
+        paid_value,
+        payment_date
     ):
-        self.documentoIdentificacionArrendatario = \
-            documentoIdentificacionArrendatario
-        self.codigoInmueble = codigoInmueble
-        self.valorPagado = valorPagado
-        self.fechaPago = fechaPago
+        self.lessee_id = lessee_id
+        self.property_code = property_code
+        self.paid_value = paid_value
+        self.payment_date = payment_date
 
     def __repr__(self):
-        return (
-            f'Payment({self.documentoIdentificacionArrendatario}, '
-            f'{self.codigoInmueble})'
-        )
+        return f'Payment({self.lessee_id}, {self.property_code})'
 
     def __str__(self):
-        return (
-            f'{self.documentoIdentificacionArrendatario}, '
-            f'{self.codigoInmueble}'
-        )
+        return f'{self.lessee_id}, {self.property_code}'

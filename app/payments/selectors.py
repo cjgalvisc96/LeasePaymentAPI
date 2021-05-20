@@ -1,12 +1,12 @@
 from app.payments.models import Payment
 
 
-def filter_payment_by_leese_id_and_code_property(
+def filter_payment_by_lessee_id_and_property_code(
     *,
-    leese_id: int,
-    code_property: str
+    lessee_id: int,
+    property_code: str
 ) -> Payment:
     return Payment.simple_filter(
-        documentoIdentificacionArrendatario=leese_id,
-        codigoInmueble=code_property
+        lessee_id=lessee_id,
+        property_code=property_code
     )
