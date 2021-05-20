@@ -87,7 +87,7 @@ def manage_db_errors(
     if isinstance(db_error, IntegrityError):
         return payment_error_messages['integrity_db_error'].\
             format(
-                payment['lessee_id'],
-                payment['property_code']
+                payment['property_code'],
+                payment['lessee_id']
             )
     return payment_error_messages['unknown_error']
